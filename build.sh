@@ -5,7 +5,7 @@ CONTAINER_NAME=terminal
 IMAGE_NAME=terminal
 
 # Change to the directory containing the Git repository
-cd apps/portfolio-site
+cd apps/react-terminal
 
 # Check for updates
 git fetch

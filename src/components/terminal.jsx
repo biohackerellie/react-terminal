@@ -1,10 +1,10 @@
 import '../index.css';
-import commands, { websiteCommands } from './commands';
+import commands, { websiteCommands, socialsCommands } from './commands';
 import { useState, useRef } from 'react';
 
 function Terminal() {
   const [input, setInput] = useState('');
-  const [output, setOutput] = useState('Welcome to EPKlabs. Type "help" for a list of commands.');
+  const [output, setOutput] = useState("Hi! I'm Ellie's personal assistant! How can I help you? Type 'help' for a list of commands.");
   const inputRef = useRef();
   const [commandContext, setCommandContext] = useState(null);
 
@@ -13,10 +13,10 @@ function Terminal() {
       onClick={(e) => {
         inputRef.current.focus();
       }}
-      className="bg-primary text-white drop-shadow h-full w-full fixed p-4 box-border overflow-auto"
+      className="bg-primary text-white drop-shadow h-full w-full overflow-auto p-4 box-border "
     >
       <div className="whitespace-pre-line text-blue-100 drop-shadow-md">{output}</div>
-      <span className="flex text-pink-300 drop-shadow-md">
+      <span className="flex text-pink-300 drop-shadow-md mb-50">
         user:&nbsp;
         <input
           ref={inputRef}
@@ -37,9 +37,10 @@ function Terminal() {
                 } else if (commandResult.type === 'link') {
                   window.open(commandResult.value, '_blank', 'noopener,noreferrer');
                   newOutput += `Opened ${commandResult.value} in a new tab`;
+                } else if (commandResult.type === 'clear') {
+                  window.location.reload();
                 }
-                setOutput(newOutput);
-
+                
                 if (commandResult.context) {
                   setCommandContext(commandResult.context);
                 } else {
@@ -52,11 +53,17 @@ function Terminal() {
                   newOutput += `Opened ${commandResult.value} in a new tab`;
                 }
                 setCommandContext(null);
-                setOutput(newOutput);
+              } else if (commandContext === 'socials' && socialsCommands.hasOwnProperty(input)) {
+                const commandResult = socialsCommands[input]();
+                if (commandResult.type === 'link') {
+                  window.open(commandResult.value, '_blank', 'noopener,noreferrer');
+                  newOutput += `Opened ${commandResult.value} in a new tab`;
+                }
+                setCommandContext(null);
               } else {
                 newOutput += 'Command not found';
-                setOutput(newOutput);
               }
+              setOutput(newOutput);
               setInput('');
             }
           }}

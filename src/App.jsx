@@ -7,7 +7,7 @@ import Header from './components/header'
 function App() {
 
 	return (
-		<div>
+		<div className="bg-primary h-full w-full absolute" >
 		<Header /> 
 		<Terminal />
 		</div>

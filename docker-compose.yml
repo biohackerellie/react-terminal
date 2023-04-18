@@ -3,7 +3,7 @@ services:
   terminal:
     image: node:18
     container_name: terminal
-    entry_name: /bin/bash
+    entry_name: "/bin/bash"
     ports:
       - 4020:4020
     working_dir: /app

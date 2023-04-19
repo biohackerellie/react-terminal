@@ -85,4 +85,28 @@ Below, I will show you a secion of the live code followed by a template for addi
 ```
 
 
-Please send me a message if I've left anything out, otherwise, have at it! :D
+### Deployment
+
+While there are many services out there to host this app like GitHub Pages, Vercel, Firebase, etc. I have included a Dockerfile and the build script that I use to deploy this on my homelab. 
+
+#### Dockerfile
+```dockerfile
+#Build step
+FROM node:16 AS build
+ENV NODE_ENV=production
+ENV NPM_CONFIG_LOGLEVEL=error
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --force
+COPY . . 
+RUN npm run build 
+
+#Deploy step
+FROM busybox:latest as deploy
+WORKDIR /app
+COPY --from=build /app/dist/ ./
+
+EXPOSE 4020
+
+CMD ["busybox", "httpd", "-f", "-v", "-p", "4020"]
+```

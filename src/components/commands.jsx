@@ -12,7 +12,7 @@ const commands ={
 			"'contact' - send Ellie an email \b\n"
 		/* !todo	"'more commands", */
 		}),
-	about: () => ({ type: "text", value: "Hi! My name is Ellie Kerns, I'm 30 years old, queer af, and a nerd!. \b\n" + 
+	about: () => ({ type: "text", value: "Hi! My name is Ellie Kerns, I'm 30 a year old sys admin, web developer, and a nerd!. \b\n" + 
 		"I'm a full stack web developer, and I'm currently working on a lot of new projects while mastering languages like javascript, python, and C#! \b\n" + 
 		"When I'm not coding, I love making music, yes I'm also a producer, or playing video games. \b\n",
 	}),

@@ -31,11 +31,12 @@ function Terminal() {
           onChange={(e) => setInput(e.target.value)} /* on change, update input */
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
+							const userInput = input.trim().toLowerCase(); /* trim white space and make lowercase */
               let newOutput = '';
               newOutput = output + '\n'; /* add new line to output */
 							/* add user input to output if type is standard is text with no nested context */
-              if (commands.hasOwnProperty(input)) {
-                const commandResult = commands[input]();
+              if (commands.hasOwnProperty(userInput)) {
+                const commandResult = commands[userInput]();
                 if (commandResult.type === 'text') {
                   newOutput += commandResult.value;
                 } else if (commandResult.type === 'link') { /* if type is link, open link in new tab. More types and actions to do with them made here. Can add image type for example */
@@ -50,15 +51,15 @@ function Terminal() {
                 } else {
                   setCommandContext(null);
                 }  /* change context to nested context if there is one */
-              } else if (commandContext === 'websites' && websiteCommands.hasOwnProperty(input)) {
-                const commandResult = websiteCommands[input]();
+              } else if (commandContext === 'websites' && websiteCommands.hasOwnProperty(userInput)) {
+                const commandResult = websiteCommands[userInput]();
                 if (commandResult.type === 'link') {
                   window.open(commandResult.value, '_blank', 'noopener,noreferrer');
                   newOutput += `Opened ${commandResult.value} in a new tab`;
                 }
                 setCommandContext(null);
-              } else if (commandContext === 'socials' && socialsCommands.hasOwnProperty(input)) {
-                const commandResult = socialsCommands[input]();
+              } else if (commandContext === 'socials' && socialsCommands.hasOwnProperty(userInput)) {
+                const commandResult = socialsCommands[userInput]();
                 if (commandResult.type === 'link') {
                   window.open(commandResult.value, '_blank', 'noopener,noreferrer');
                   newOutput += `Opened ${commandResult.value} in a new tab`;

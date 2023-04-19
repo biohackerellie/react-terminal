@@ -4,6 +4,8 @@
 
 [Demo](https://terminal.epklabs.com)
 
+![Terminal](src/assets/terminal.png)
+
 ---
 
 ### Installation

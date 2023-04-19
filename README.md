@@ -2,9 +2,13 @@
 
 ## A simple terminal website template made with React JS, Vite, and TailwindCSS with support for nested commands
 
+[Demo](https://terminal.epklabs.com)
+
+---
+
 ### Installation
 
-To get started , clone the repo to your local machine then install the dependancies: 
+To get started , clone the repo to your local machine then install the dependencies: 
 ```bash
 cd react-terminal
 npm install

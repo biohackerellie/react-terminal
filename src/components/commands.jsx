@@ -1,7 +1,8 @@
 const commands ={
-	help: () => ({
-		type: "text", 
-		value: 
+	/* define each command as an object, with type either text or link, value being what is returned in the output, and context sets the state for further nested commands */
+	help: () => ({ /* if user types help, display list of commands */
+		type: "text", /* type is either text or link. Add new types in terminal.jsx file */
+		value: /* value is what is returned in the output */
 			"Available commands: \b\n" + 
 			"'websites' - view a list of Ellie's self developed websites \b\n" +
 			"'hi' - say hello to Ellie \b\n" +
@@ -36,11 +37,11 @@ const commands ={
 		context: "socials",
 
 	}),
-	clear: () => ({ type: "clear",}),
+	clear: () => ({ type: "clear",}), /* clear performs a window reload, and has no output */
 }
 
 
-const websiteCommands = {
+const websiteCommands = { /* each nested command is defined in the same way as the parent command */
 	portfolio: () => ({ type: "link", value: "https://epklabs.com",}),
 	docs: () => ({ type: "link", value: "https://docs.epklabs.com",}),
 	

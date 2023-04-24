@@ -1,5 +1,5 @@
 import '../index.css'
-import logo from '../assets/logo.svg'
+import logo from '../assets/logo.png'
 
 function Header() {
 	return (
@@ -8,7 +8,7 @@ function Header() {
 				<img
 					src={logo}
 					alt="logo"
-					className="h-24 w-24 mt-4 mr-4 drop-shadow "
+					className="h-32 w-32 mt-4 mr-4 drop-shadow "
 				/>
 			
 			</div>

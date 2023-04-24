@@ -1,7 +1,8 @@
 const commands ={
-	help: () => ({
-		type: "text", 
-		value: 
+	/* define each command as an object, with type either text or link, value being what is returned in the output, and context sets the state for further nested commands */
+	help: () => ({ /* if user types help, display list of commands */
+		type: "text", /* type is either text or link. Add new types in terminal.jsx file */
+		value: /* value is what is returned in the output */
 			"Available commands: \b\n" + 
 			"'websites' - view a list of Ellie's self developed websites \b\n" +
 			"'hi' - say hello to Ellie \b\n" +
@@ -11,7 +12,7 @@ const commands ={
 			"'contact' - send Ellie an email \b\n"
 		/* !todo	"'more commands", */
 		}),
-	about: () => ({ type: "text", value: "Hi! My name is Ellie Kerns, I'm 30 years old, queer af, and a nerd!. \b\n" + 
+	about: () => ({ type: "text", value: "Hi! My name is Ellie Kerns, I'm 30 a year old sys admin, web developer, and a nerd!. \b\n" + 
 		"I'm a full stack web developer, and I'm currently working on a lot of new projects while mastering languages like javascript, python, and C#! \b\n" + 
 		"When I'm not coding, I love making music, yes I'm also a producer, or playing video games. \b\n",
 	}),
@@ -36,11 +37,11 @@ const commands ={
 		context: "socials",
 
 	}),
-	clear: () => ({ type: "clear",}),
+	clear: () => ({ type: "clear",}), /* clear performs a window reload, and has no output */
 }
 
 
-const websiteCommands = {
+const websiteCommands = { /* each nested command is defined in the same way as the parent command */
 	portfolio: () => ({ type: "link", value: "https://epklabs.com",}),
 	docs: () => ({ type: "link", value: "https://docs.epklabs.com",}),
 	

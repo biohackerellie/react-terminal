@@ -77,7 +77,7 @@ Below, I will show you a secion of the live code followed by a template for addi
                 setCommandContext(null);
               } 
               /*
-               Here is where jump in 
+               Here is where you jump in 
                */
               
               else if (commandContext === 'new-context' && socialsCommands.hasOwnProperty(input)) {

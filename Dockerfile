@@ -1,10 +1,10 @@
 #Build step
-FROM node:16 AS build
+FROM node:lts AS build
 ENV NODE_ENV=production
 ENV NPM_CONFIG_LOGLEVEL=error
 WORKDIR /app
 COPY package*.json ./
-RUN npm install --force
+RUN npm ci
 COPY . . 
 RUN npm run build 
 
